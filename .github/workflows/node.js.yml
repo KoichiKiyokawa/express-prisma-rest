@@ -16,7 +16,7 @@ jobs:
           node-version: 16
       - run: npm i -g pnpm@6.10.2
       - run: pnpm i --frozen-lockfile
-      - run: pnpx prettier --check . --ignore-path .gitignore
+      - run: pnpx prettier --check .
       - run: printenv ENV_TS | base64 -d > src/env.ts
         env:
           ENV_TS: ${{ secrets.ENV_TS }}
