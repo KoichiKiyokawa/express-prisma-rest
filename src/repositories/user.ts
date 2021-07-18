@@ -1,7 +1,7 @@
 import { prisma } from "../modules/prisma";
 
-export class UserRepository {
+export const UserRepository = {
   findByEmail(email: string) {
     return prisma.user.findUnique({ where: { email } });
-  }
-}
+  },
+};

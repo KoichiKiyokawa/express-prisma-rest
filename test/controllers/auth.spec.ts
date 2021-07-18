@@ -11,7 +11,7 @@ const dummyUserResponse = {
 };
 
 describe("AuthLogin", () => {
-  (UserRepository as jest.Mock).prototype.findByEmail.mockResolvedValue(
+  (UserRepository.findByEmail as jest.Mock).mockResolvedValue(
     dummyUserResponse
   );
 
