@@ -10,7 +10,7 @@
     "dev:run": "nodemon dist",
     "dev:watch": "ts-node bin/watch.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ts-node bin/build.ts && npm run prisma:generate",
+    "build": "npm run prisma:generate && ts-node bin/build.ts",
     "deploy": "npm run build && gcloud app deploy --project kiyo-dev-944",
     "prisma:generate": "prisma generate"
   },
