@@ -1,3 +1,3 @@
-export const User = (data) => ({
+export const User = (_data: any) => ({
   toJson() {},
-})
+});

@@ -1,4 +1,4 @@
-import { BuildOptions } from "esbuild"
+import { BuildOptions } from "esbuild";
 
 export const baseOption: BuildOptions = {
   bundle: true,
@@ -8,4 +8,4 @@ export const baseOption: BuildOptions = {
   platform: "node",
   sourcemap: true,
   target: "node14",
-}
+};

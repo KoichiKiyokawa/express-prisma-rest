@@ -1,16 +1,16 @@
-import express from "express"
+import express from "express";
 
 export const respondInternalServerError = (
   res: express.Response,
   message: string
 ) => {
-  res.status(500).json({ message })
-}
+  res.status(500).json({ message });
+};
 
 export const respondOK = (res: express.Response, message: string) => {
-  res.status(200).send({ message })
-}
+  res.status(200).send({ message });
+};
 
 export const respondUnauthorized = (res: express.Response, message: string) => {
-  res.status(401).send({ message })
-}
+  res.status(401).send({ message });
+};

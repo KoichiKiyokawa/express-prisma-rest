@@ -1,5 +1,5 @@
-import express from "express"
+import express from "express";
 
 export const UserIndex: express.Handler = (req, res) => {
-  res.send("hoge")
-}
+  res.send("hoge");
+};

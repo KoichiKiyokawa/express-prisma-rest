@@ -1,6 +1,6 @@
-import { Express } from "express"
-import { UserIndex } from "../controllers/user"
+import { Express } from "express";
+import { UserIndex } from "../controllers/user";
 
 export function UserRouter(router: Express) {
-  router.get("/user", UserIndex)
+  router.get("/user", UserIndex);
 }

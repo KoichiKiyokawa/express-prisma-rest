@@ -1,4 +1,4 @@
-import { build } from "esbuild"
-import { baseOption } from "./base-options"
+import { build } from "esbuild";
+import { baseOption } from "./base-options";
 
-build(baseOption)
+build(baseOption);
