@@ -5,18 +5,8 @@ import {
   respondInternalServerError,
   respondOK,
   respondUnauthorized,
-} from "./utils";
-import { User } from "../generated/client";
-
-type LoginBody = {
-  email: string;
-  password: string;
-};
-
-type Request = express.Request<unknown, unknown, LoginBody> & {
-  session: { user?: User };
-  body: Body;
-};
+} from "./core";
+import { Request } from "./core";
 
 export const AuthLogin = async (req: Request, res: express.Response) => {
   const { email, password } = req.body;
