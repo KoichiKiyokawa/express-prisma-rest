@@ -1,6 +1,6 @@
 # prismaは実行前に`prisma generate`を実効する必要がある。
 # Error: EROFS: read-only file system, unlink '/workspace/node_modules/.prisma/client/index.js'
 # というエラーがでる。prisma generateをApp Engine環境で行うと、ファイルがreadonlyなので書き込めない。
-# Cloud Runを使う必要がある
+# prisma generateの出力先を変更する必要があることに注意。
 service: express-prisma-rest
 runtime: nodejs14
