@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "private": true,
   "scripts": {
+    "start": "node dist",
     "dev": "rm -rf dist && pnpx prisma generate && pnpm run build && run-p dev:*",
     "dev:run": "nodemon dist",
     "dev:watch": "ts-node bin/watch.ts",
