@@ -1,0 +1,2 @@
+service: express-prisma-rest
+runtime: nodejs14
