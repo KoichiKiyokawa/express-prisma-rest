@@ -8,8 +8,13 @@ import {
 } from "./core";
 import { Request } from "./core";
 
+type LoginBody = {
+  email: string;
+  password: string;
+};
+
 export const AuthLogin = async (req: Request, res: express.Response) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body as LoginBody;
   const user = await UserRepository.findByEmail(email);
   const commonErrorMessage = "email or password is wrong.";
   if (user == null) return respondUnauthorized(res, commonErrorMessage);

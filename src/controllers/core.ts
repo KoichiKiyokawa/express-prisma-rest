@@ -1,12 +1,7 @@
 import express from "express";
 import { User } from "../generated/client";
 
-type LoginBody = {
-  email: string;
-  password: string;
-};
-
-export type Request = express.Request<unknown, unknown, LoginBody> & {
+export type Request = express.Request & {
   session: { user?: User };
   body: Body;
 };
@@ -28,6 +23,14 @@ export const respondInternalServerError = (
 
 export const respondOK = (res: express.Response, message: string) => {
   respondBase(res, 200, message);
+};
+
+export const respondJson = (
+  res: express.Response,
+  json: Record<string, unknown> | Record<string, unknown>[]
+) => {
+  res.setHeader("content-type", "application/json");
+  res.status(200).json(json);
 };
 
 export const respondUnauthorized = (res: express.Response, message: string) => {

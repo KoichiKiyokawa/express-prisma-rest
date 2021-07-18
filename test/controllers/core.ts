@@ -4,6 +4,14 @@ export const resMock = {
     return this;
   },
   send: () => resMock,
-  json: () => resMock,
-  result: { status: undefined as number | undefined }, // 処理の結果を保存しておくためのオブジェクト
+  setHeader: () => {},
+  json(obj: any) {
+    this.result.json = obj;
+    return this;
+  },
+  // 処理の結果を保存しておくためのオブジェクト
+  result: {
+    status: undefined as number | undefined,
+    json: undefined as any,
+  },
 };
