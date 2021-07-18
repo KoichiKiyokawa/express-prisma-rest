@@ -1,4 +1,4 @@
-import { AuthLogin, AuthLogout } from "../../src/controllers/auth";
+import { AuthCheck, AuthLogin, AuthLogout } from "../../src/controllers/auth";
 import { UserRepository } from "../../src/repositories/user";
 import bcrypt from "bcryptjs";
 import { resMock } from "./core";
@@ -37,11 +37,25 @@ describe("AuthLogin", () => {
   });
 });
 
+describe("AuthCheck", () => {
+  it("status code 200 if logged in", async () => {
+    const req = { session: { user: dummyUserResponse } };
+    // @ts-ignore
+    await AuthCheck(req, resMock);
+    expect(resMock.result.status).toBe(200);
+  });
+
+  it("status code 401 if not logged in", async () => {
+    const req = { session: { user: undefined } };
+    // @ts-ignore
+    await AuthCheck(req, resMock);
+    expect(resMock.result.status).toBe(401);
+  });
+});
+
 describe("AuthLogout", () => {
   it("session is cleared after logout", async () => {
-    const req = {
-      session: { user: dummyUserResponse },
-    };
+    const req = { session: { user: dummyUserResponse } };
 
     // @ts-ignore
     await AuthLogout(req, resMock);
