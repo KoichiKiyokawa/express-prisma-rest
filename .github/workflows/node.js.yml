@@ -22,3 +22,4 @@ jobs:
           ENV_TS: ${{ secrets.ENV_TS }}
       - run: pnpm run prisma:generate
       - run: pnpx tsc --noEmit
+      - run: pnpm run test

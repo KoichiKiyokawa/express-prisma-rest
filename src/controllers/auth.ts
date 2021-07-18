@@ -20,7 +20,7 @@ type Request = express.Request<unknown, unknown, LoginBody> & {
 
 export const AuthLogin = async (req: Request, res: express.Response) => {
   const { email, password } = req.body;
-  const user = await UserRepository.findByEmail(email);
+  const user = await new UserRepository().findByEmail(email);
   const commonErrorMessage = "email or password is wrong.";
   if (user == null) return respondUnauthorized(res, commonErrorMessage);
 
