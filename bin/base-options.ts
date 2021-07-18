@@ -1,11 +1,11 @@
 import { BuildOptions } from "esbuild"
-import pkg from "../package.json"
 
 export const baseOption: BuildOptions = {
-  entryPoints: ["src/index.ts"],
   bundle: true,
+  entryPoints: ["src/index.ts"],
+  minify: true,
   outdir: "dist",
   platform: "node",
+  sourcemap: true,
   target: "node14",
-  external: Object.keys(pkg.dependencies),
 }

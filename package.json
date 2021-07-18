@@ -6,28 +6,28 @@
   "private": true,
   "scripts": {
     "start": "node dist",
-    "dev": "rm -rf dist && pnpx prisma generate && pnpm run build && run-p dev:*",
+    "dev": "rm -rf dist && npm run build && run-p dev:*",
     "dev:run": "nodemon dist",
     "dev:watch": "ts-node bin/watch.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ts-node bin/build.ts",
-    "deploy": "rm -rf dist && pnpm run build && gcloud app deploy --project kiyo-dev-944"
+    "build": "ts-node bin/build.ts && npm run prisma:generate",
+    "deploy": "npm run build && gcloud app deploy --project kiyo-dev-944",
+    "prisma:generate": "prisma generate"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@prisma/client": "^2.27.0",
-    "bcrypt": "^5.0.1"
-  },
   "devDependencies": {
+    "@prisma/client": "^2.27.0",
     "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.4",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.3.3",
-    "esbuild": "^0.12.15",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "esbuild": "^0.12.15",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
