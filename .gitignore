@@ -1,6 +1,6 @@
 dist
 env.ts
-.env
+.env*
 node_modules
 test.db
 src/generated
