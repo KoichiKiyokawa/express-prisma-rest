@@ -10,7 +10,8 @@ const isProd = process.env.NODE_ENV === "production";
 
 const RedisStore = connectRedis(session as any);
 const redisClient = redis.createClient({
-  host: isProd ? "redis" : "localhost",
+  host: isProd ? "redis-1689" : "localhost",
+  port: isProd ? 10000 : 6379,
 });
 
 const app = fastify({ logger: { prettyPrint: !isProd } });
