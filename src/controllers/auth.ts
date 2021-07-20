@@ -10,7 +10,9 @@ type LoginBody = {
 
 export const AuthLogin = async (req: FastifyRequest<{ Body: LoginBody }>) => {
   const { email, password } = req.body;
-  const user = await UserRepository.findByEmail(email);
+  const user = await UserRepository.findByEmail(email).catch(() => {
+    throw Error("something is wrong");
+  });
   const commonError = new UnauthorizedException("email or password is wrong.");
   if (user == null) throw commonError;
 
