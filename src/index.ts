@@ -1,35 +1,18 @@
-import express from "express";
-import session from "express-session";
-import { SESSION_SECRET } from "./env";
+import fastify from "fastify";
+import cors from "fastify-cors";
+import session from "fastify-session";
+import cookie from "fastify-cookie";
+
 import { setupRoutes } from "./routers";
-import cors from "cors";
-import helmet from "helmet";
-import morgan from "morgan";
 
-const app = express();
+const app = fastify({ logger: { prettyPrint: true } });
 
-app.use(helmet());
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(
-  session({
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    // secure: trueの場合、httpだとcookieに書き込めない。
-    cookie: { secure: process.env.NODE_ENV === "production", httpOnly: true },
-  })
-);
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-    preflightContinue: true,
-  })
-);
+app.register(cors, { credentials: true, origin: "http://localhost:3000" });
+app.register(cookie);
+app.register(session, { secret: "eoiajonlkntoaierngoangnlkanekrgaeoijm;mkda" });
 
 setupRoutes(app);
 
-app.listen(process.env.PORT ?? 8080, console.log);
+app.listen(process.env.PORT ?? 8080);
 
 export { app };

@@ -1,5 +1,5 @@
+import { UnauthorizedException } from "../../src/controllers/core";
 import { UserCreate, UserIndex } from "../../src/controllers/user";
-import { resMock } from "./core";
 import { UserRepository } from "../../src/repositories/user";
 
 jest.mock("../../src/repositories/user");
@@ -19,35 +19,31 @@ const dummyUser = { email: "hoge@example.com", password: "hogehoge" };
 });
 
 describe("User controller index", () => {
-  it("auth guard", async () => {
-    const req = { session: { user: undefined } } as any;
-    await UserIndex(req, resMock as any);
-    expect(resMock.result.status).toBe(401);
+  it("auth guard", () => {
+    const req = { session: { isLoggedIn: undefined } } as any;
+    return expect(UserIndex(req)).rejects.toThrow(UnauthorizedException);
   });
 
   it("default use case", async () => {
-    const req = { session: { user: {} } } as any; // logged in
-    await UserIndex(req, resMock as any);
-    expect(resMock.result.status).toBe(200);
-    expect(resMock.result.json).toEqual([{ ...dummyUser, id: "hoge" }]);
+    const req = { session: { isLoggedIn: true } } as any;
+    const result = await UserIndex(req);
+    expect(result).toEqual([{ ...dummyUser, id: "hoge" }]);
   });
 });
 
 describe("User controller create", () => {
-  it("auth guard", async () => {
+  it("auth guard", () => {
     const req = { session: { user: undefined } } as any;
-    UserCreate(req, resMock as any);
-    expect(resMock.result.status).toBe(401);
+    return expect(UserCreate(req)).rejects.toThrow(UnauthorizedException);
   });
 
   it("default use case", async () => {
     const req = {
-      session: { user: {} },
+      session: { isLoggedIn: true },
       body: dummyUser,
-    } as any; // logged in
+    } as any;
 
-    await UserCreate(req, resMock as any);
-    expect(resMock.result.status).toBe(200);
-    expect(resMock.result.json).toEqual({ ...dummyUser, id: "hoge" });
+    const result = await UserCreate(req);
+    expect(result).toEqual({ ...dummyUser, id: "hoge" });
   });
 });

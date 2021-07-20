@@ -1,7 +1,8 @@
 import { AuthCheck, AuthLogin, AuthLogout } from "../../src/controllers/auth";
 import { UserRepository } from "../../src/repositories/user";
 import bcrypt from "bcryptjs";
-import { resMock } from "./core";
+import { FastifyRequest } from "fastify";
+import { UnauthorizedException } from "../../src/controllers/core";
 
 jest.mock("../../src/repositories/user");
 
@@ -18,47 +19,46 @@ describe("AuthLogin", () => {
   it("write to session after login success", async () => {
     const req = {
       body: { email: "", password: "hogehoge" },
-      session: { user: undefined },
+      session: { isLoggedIn: undefined },
     };
-    // @ts-ignore
-    await AuthLogin(req, resMock);
-    expect(req.session.user).toBe(dummyUserResponse);
+
+    await AuthLogin(req as any);
+    expect(req.session.isLoggedIn).toBe(true);
   });
 
   it("do not write to session after login failed", async () => {
     const req = {
       body: { email: "", password: "foobar" },
-      session: { user: undefined },
+      session: { isLoggedIn: undefined },
     };
 
-    // @ts-ignore
-    await AuthLogin(req, resMock);
-    expect(req.session.user).toBeUndefined();
+    await AuthLogin(req as any).catch(() => {});
+    expect(req.session.isLoggedIn).toBeFalsy();
   });
 });
 
 describe("AuthCheck", () => {
   it("status code 200 if logged in", async () => {
-    const req = { session: { user: dummyUserResponse } };
-    // @ts-ignore
-    await AuthCheck(req, resMock);
-    expect(resMock.result.status).toBe(200);
+    const req = { session: { isLoggedIn: true } };
+    const result = await AuthCheck(req as any);
+    expect(result).toBe("ok");
   });
 
-  it("status code 401 if not logged in", async () => {
+  it("status code 401 if not logged in", () => {
     const req = { session: { user: undefined } };
-    // @ts-ignore
-    await AuthCheck(req, resMock);
-    expect(resMock.result.status).toBe(401);
+    return expect(AuthCheck(req as any)).rejects.toThrowError(
+      UnauthorizedException
+    );
   });
 });
 
 describe("AuthLogout", () => {
   it("session is cleared after logout", async () => {
-    const req = { session: { user: dummyUserResponse } };
+    const req = {
+      session: { isLoggedIn: true },
+    } as unknown as FastifyRequest;
 
-    // @ts-ignore
-    await AuthLogout(req, resMock);
-    expect(req.session.user).toBeUndefined();
+    await AuthLogout(req);
+    expect(req.session.isLoggedIn).toBe(false);
   });
 });
