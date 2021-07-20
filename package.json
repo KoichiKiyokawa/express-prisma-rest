@@ -6,15 +6,12 @@
   "private": true,
   "scripts": {
     "start": "node dist",
-    "rimdist": "rm -rf dist",
-    "dev": "run-s rimdist build dev:core",
-    "dev:core": "run-p dev:run dev:watch",
-    "dev:run": "nodemon dist",
-    "dev:watch": "ts-node bin/watch.ts",
+    "dev": "run-p dev:*",
+    "dev:run": "yarn build && nodemon dist",
+    "dev:watch": "ts-node scripts/watch.ts",
     "test": "jest",
-    "build": "ts-node bin/build.ts",
-    "deploy": "run-s build deploy:core",
-    "deploy:core": "gcloud app deploy --project kiyo-dev-944"
+    "build": "ts-node scripts/build.ts && cp -r src/generated dist",
+    "deploy": "yarn build && gcloud app deploy --project kiyo-dev-944"
   },
   "author": "",
   "license": "ISC",
