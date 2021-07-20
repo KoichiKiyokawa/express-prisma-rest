@@ -10,8 +10,8 @@
     "dev:run": "yarn build && nodemon dist",
     "dev:watch": "tsc -w",
     "test": "jest",
-    "build": "rm -rf dist && tsc && cp -r src/generated dist/",
-    "deploy": "yarn prisma generate && yarn build && rm dist/generated/client/query-engine-darwin-arm64 && gcloud app deploy --project kiyo-dev-944"
+    "build": "rm -rf dist && tsc",
+    "deploy": "sh scripts/deploy.sh"
   },
   "author": "",
   "license": "ISC",
