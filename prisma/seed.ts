@@ -8,7 +8,13 @@ export async function seed() {
   await prisma.user.create({
     data: {
       email: "hoge@example.com",
-      password: bcrypt.hashSync("hogehoge", 10),
+      password: bcrypt.hashSync("hogehoge"),
+    },
+  });
+  await prisma.user.create({
+    data: {
+      email: "hoge2@example.com",
+      password: bcrypt.hashSync("hogehoge2"),
     },
   });
 

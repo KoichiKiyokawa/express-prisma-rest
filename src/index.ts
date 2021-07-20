@@ -7,8 +7,10 @@ import { setupRoutes } from "./routers";
 
 const app = fastify({ logger: { prettyPrint: true } });
 
+// TODO: CHANGE IN PRODUCTION
 app.register(cors, { credentials: true, origin: "http://localhost:3000" });
 app.register(cookie);
+// TODO: CHANGE IN PRODUCTION
 app.register(session, { secret: "eoiajonlkntoaierngoangnlkanekrgaeoijm;mkda" });
 
 setupRoutes(app);
