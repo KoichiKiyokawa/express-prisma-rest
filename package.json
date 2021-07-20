@@ -12,8 +12,7 @@
     "test": "jest",
     "build": "rm -rf dist && tsc",
     "deploy": "sh scripts/deploy.sh",
-    "postinstall": "node --eval 'process.exit(process.env.NODE_ENV === `production` ? 1 : 0)' || yarn prisma:init",
-    "prisma:init": "prisma generate"
+    "postinstall": "bash scripts/prisma_init.sh"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: fastify-server
+    env: node
+    startCommand: yarn start
+  - type: pserv
+    name: redis
+    env: docker
+    repo: https://github.com/render-examples/redis.git
+    disk:
+      name: data
+      mountPath: /var/lib/redis
+      sizeGB: 10
+
+databases:
+  - name: prod
+    databaseName: mydb
