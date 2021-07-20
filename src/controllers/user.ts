@@ -1,5 +1,5 @@
 import { FastifyRequest } from "fastify";
-import { User } from "../generated/client";
+import { User } from "@prisma/client";
 import { UserRepository } from "../repositories/user";
 import { validateAuth } from "./core";
 

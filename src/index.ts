@@ -3,6 +3,11 @@ import cookie from "fastify-cookie";
 import cors from "fastify-cors";
 import session from "fastify-session";
 import { setupRoutes } from "./routers";
+import redis from "redis";
+import connectRedis from "connect-redis";
+
+const RedisStore = connectRedis(session as any);
+const redisClient = redis.createClient();
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -15,6 +20,7 @@ app.register(cookie);
 app.register(session, {
   secret: "eoiajonlkntoaierngoangnlkanekrgaeoijm;mkda",
   cookie: { secure: isProd },
+  store: new RedisStore({ client: redisClient }),
 });
 
 setupRoutes(app);

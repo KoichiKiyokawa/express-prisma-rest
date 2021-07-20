@@ -11,31 +11,37 @@
     "dev:watch": "tsc -w",
     "test": "jest",
     "build": "rm -rf dist && tsc",
-    "deploy": "sh scripts/deploy.sh"
+    "deploy": "sh scripts/deploy.sh",
+    "postinstall": "node --eval 'process.exit(process.env.NODE_ENV === `production` ? 1 : 0)' || yarn prisma:init",
+    "prisma:init": "prisma generate"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^2.27.0",
     "bcryptjs": "^2.4.3",
+    "connect-redis": "^6.0.0",
     "cors": "^2.8.5",
     "fastify": "^3.19.1",
     "fastify-cookie": "^5.3.1",
     "fastify-cors": "^6.0.2",
-    "fastify-session": "^5.2.1"
+    "fastify-session": "^5.2.1",
+    "prisma": "^2.27.0",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/connect-redis": "^0.0.17",
     "@types/cors": "^2.8.12",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.3.3",
+    "@types/redis": "^2.8.31",
     "@types/supertest": "^2.0.11",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
     "npm-run-all": "^4.1.5",
     "pino-pretty": "^5.1.2",
     "prettier": "^2.3.2",
-    "prisma": "2.27.0",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
