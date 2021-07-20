@@ -1,4 +1,4 @@
-import {FastifyInstance} from 'fastify'
+import { FastifyInstance } from "fastify";
 
 import { AppRouter } from "./app";
 import { AuthRouter } from "./auth";
