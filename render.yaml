@@ -5,7 +5,7 @@ services:
     buildCommand: yarn install --frozen-lockfile && yarn build && prisma generate
     startCommand: yarn start
   - type: pserv
-    name: redis
+    name: fastify-redis
     env: docker
     repo: https://github.com/render-examples/redis.git
     disk:
