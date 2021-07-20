@@ -4,7 +4,7 @@ import { UserRepository } from "../repositories/user";
 import { validateAuth } from "./core";
 
 export const UserIndex = async (req: FastifyRequest) => {
-  // validateAuth(req);
+  validateAuth(req);
 
   try {
     const users = await UserRepository.all();

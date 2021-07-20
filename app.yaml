@@ -4,3 +4,5 @@
 # prisma generateの出力先を変更する必要があることに注意。
 service: fastify-prisma-rest
 runtime: nodejs14
+includes:
+  - env.yml
