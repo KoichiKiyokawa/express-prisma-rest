@@ -14,5 +14,5 @@ services:
       sizeGB: 10
 
 databases:
-  - name: prod
+  - name: fastify-prod
     databaseName: mydb
