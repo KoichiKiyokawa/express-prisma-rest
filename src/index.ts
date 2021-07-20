@@ -6,10 +6,12 @@ import { setupRoutes } from "./routers";
 import redis from "redis";
 import connectRedis from "connect-redis";
 
-const RedisStore = connectRedis(session as any);
-const redisClient = redis.createClient();
-
 const isProd = process.env.NODE_ENV === "production";
+
+const RedisStore = connectRedis(session as any);
+const redisClient = redis.createClient({
+  host: isProd ? "redis" : "localhost",
+});
 
 const app = fastify({ logger: { prettyPrint: !isProd } });
 
