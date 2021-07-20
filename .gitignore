@@ -1,6 +1,9 @@
 dist
+
+# env
 env.ts
 .env*
+env.yml
+
 node_modules
-test.db
 src/generated
