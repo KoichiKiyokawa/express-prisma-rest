@@ -3,7 +3,7 @@ services:
     name: fastify-server
     env: node
     buildCommand: yarn install --frozen-lockfile && yarn build && prisma generate
-    startCommand: yarn start
+    startCommand: yarn && yarn start
   - type: pserv
     name: fastify-redis
     env: docker
