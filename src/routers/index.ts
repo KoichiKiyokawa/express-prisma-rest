@@ -5,6 +5,7 @@ import { AuthRouter } from "./auth";
 import { UserRouter } from "./user";
 
 export function setupRoutes(router: FastifyInstance) {
+  router.get("/_render/health", async () => "ok");
   router.register(setup, { prefix: "api/v1" });
 }
 
