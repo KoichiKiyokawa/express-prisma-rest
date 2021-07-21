@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mgcrea/fastify-session": "^0.14.1",
     "@mgcrea/fastify-session-redis-store": "^0.9.1",
     "@prisma/client": "^2.27.0",
     "bcryptjs": "^2.4.3",
