@@ -4,6 +4,7 @@ services:
     env: node
     buildCommand: yarn install --frozen-lockfile && yarn build && prisma generate
     startCommand: node dist
+    healthCheckPath: /
   - type: pserv
     name: fastify-redis
     env: docker
