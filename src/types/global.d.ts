@@ -5,3 +5,11 @@ declare module "fastify" {
     isLoggedIn: boolean;
   }
 }
+
+declare global {
+  declare namespace NodeJS {
+    interface ProcessEnv {
+      REDIS_URL: string;
+    }
+  }
+}

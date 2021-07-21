@@ -2,9 +2,9 @@ import fastify from "fastify";
 import cookie from "fastify-cookie";
 import cors from "fastify-cors";
 import session from "fastify-session";
-import Redis from "ioredis";
+// import Redis from "ioredis";
 import { setupRoutes } from "./domains/app/router";
-import RedisStore from "@mgcrea/fastify-session-redis-store";
+// import RedisStore from "@mgcrea/fastify-session-redis-store";
 
 async function bootstrap() {
   const isProd = process.env.NODE_ENV === "production";
@@ -18,11 +18,13 @@ async function bootstrap() {
   app.register(session, {
     secret: "eoiajonlkntoaierngoangnlkanekrgaeoijm;mkda",
     cookie: { secure: isProd },
-    store: new RedisStore({
-      client: new Redis(process.env.REDIS_HOST, {
-        port: Number(process.env.REDIS_PORT),
-      }),
-    }) as any,
+    // store: new RedisStore({
+    //   client: process.env.REDIS_URL
+    //     ? new Redis(process.env.REDIS_URL)
+    //     : new Redis(process.env.REDIS_HOST, {
+    //         port: Number(process.env.REDIS_PORT),
+    //       }),
+    // }) as any,
   });
 
   setupRoutes(app);
