@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyPluginAsync } from "fastify";
-import { UserIndex } from "../controllers/user";
+import { UserIndex } from "./controller";
 
 export function UserRouter(router: FastifyInstance) {
   router.register(setup, { prefix: "users" });

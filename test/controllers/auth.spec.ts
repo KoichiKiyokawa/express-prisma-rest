@@ -1,10 +1,13 @@
-import { AuthCheck, AuthLogin, AuthLogout } from "../../src/controllers/auth";
-import { UserRepository } from "../../src/repositories/user";
 import bcrypt from "bcryptjs";
-import { FastifyRequest } from "fastify";
-import { UnauthorizedException } from "../../src/controllers/core";
+import {
+  AuthCheck,
+  AuthLogin,
+  AuthLogout,
+} from "../../src/domains/auth/controller";
+import { UnauthorizedException } from "../../src/domains/core/controller";
+import { UserRepository } from "../../src/domains/user/repository";
 
-jest.mock("../../src/repositories/user");
+jest.mock("../../src/domains/user/repository");
 
 const dummyUserResponse = {
   email: "dummy@example.com",
@@ -56,9 +59,9 @@ describe("AuthLogout", () => {
   it("session is cleared after logout", async () => {
     const req = {
       session: { isLoggedIn: true },
-    } as unknown as FastifyRequest;
+    };
 
-    await AuthLogout(req);
+    await AuthLogout(req as any);
     expect(req.session.isLoggedIn).toBe(false);
   });
 });

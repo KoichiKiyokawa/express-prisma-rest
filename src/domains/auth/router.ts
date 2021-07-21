@@ -1,6 +1,5 @@
 import { FastifyInstance } from "fastify";
-
-import { AuthCheck, AuthLogin, AuthLogout } from "../controllers/auth";
+import { AuthCheck, AuthLogin, AuthLogout } from "./controller";
 
 export function AuthRouter(router: FastifyInstance) {
   router.post("/auth/login", AuthLogin);

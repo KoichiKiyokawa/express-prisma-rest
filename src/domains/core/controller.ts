@@ -1,4 +1,4 @@
-import { RouteHandler, FastifyRequest } from "fastify";
+import { FastifyRequest, RouteHandler } from "fastify";
 
 export type Handler = RouteHandler<{}>;
 

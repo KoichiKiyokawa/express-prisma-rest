@@ -1,8 +1,6 @@
 import { FastifyInstance, FastifyPluginAsync } from "fastify";
-
-import { AppRouter } from "./app";
-import { AuthRouter } from "./auth";
-import { UserRouter } from "./user";
+import { AuthRouter } from "../auth/router";
+import { UserRouter } from "../user/router";
 
 export function setupRoutes(router: FastifyInstance) {
   router.get("/_render/health", async () => "ok");
@@ -10,7 +8,6 @@ export function setupRoutes(router: FastifyInstance) {
 }
 
 const setup: FastifyPluginAsync = async (router) => {
-  AppRouter(router);
   UserRouter(router);
   AuthRouter(router);
 };

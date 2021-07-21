@@ -1,7 +1,7 @@
-import { FastifyRequest } from "fastify";
 import { User } from "@prisma/client";
-import { UserRepository } from "../repositories/user";
-import { validateAuth } from "./core";
+import { FastifyRequest } from "fastify";
+import { validateAuth } from "../core/controller";
+import { UserRepository } from "./repository";
 
 export const UserIndex = async (req: FastifyRequest) => {
   validateAuth(req);

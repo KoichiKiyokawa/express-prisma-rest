@@ -1,8 +1,8 @@
-import { UnauthorizedException } from "../../src/controllers/core";
-import { UserCreate, UserIndex } from "../../src/controllers/user";
-import { UserRepository } from "../../src/repositories/user";
+import { UnauthorizedException } from "../../src/domains/core/controller";
+import { UserCreate, UserIndex } from "../../src/domains/user/controller";
+import { UserRepository } from "../../src/domains/user/repository";
 
-jest.mock("../../src/repositories/user");
+jest.mock("../../src/domains/user/repository");
 
 const dummyUser = { email: "hoge@example.com", password: "hogehoge" };
 

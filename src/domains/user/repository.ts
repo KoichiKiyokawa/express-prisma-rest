@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { prisma } from "../modules/prisma";
+import { prisma } from "../../modules/prisma";
 
 export const UserRepository = {
   find(id: number) {

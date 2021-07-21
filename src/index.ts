@@ -1,10 +1,10 @@
+import connectRedis from "connect-redis";
 import fastify from "fastify";
 import cookie from "fastify-cookie";
 import cors from "fastify-cors";
 import session from "fastify-session";
-import { setupRoutes } from "./routers";
 import redis from "redis";
-import connectRedis from "connect-redis";
+import { setupRoutes } from "./domains/app/router";
 
 const isProd = process.env.NODE_ENV === "production";
 

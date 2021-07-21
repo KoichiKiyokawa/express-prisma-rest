@@ -1,7 +1,7 @@
-import { FastifyRequest } from "fastify";
 import bcrypt from "bcryptjs";
-import { UserRepository } from "../repositories/user";
-import { UnauthorizedException, validateAuth } from "./core";
+import { FastifyRequest } from "fastify";
+import { UnauthorizedException, validateAuth } from "../core/controller";
+import { UserRepository } from "../user/repository";
 
 type LoginBody = {
   email: string;
