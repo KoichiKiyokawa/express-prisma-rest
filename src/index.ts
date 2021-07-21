@@ -21,8 +21,8 @@ async function bootstrap() {
     store: new RedisStore({
       client: process.env.REDIS_URL
         ? new Redis(process.env.REDIS_URL)
-        : new Redis(process.env.REDIS_HOST, {
-            port: Number(process.env.REDIS_PORT),
+        : new Redis(process.env.REDIS_HOST ?? "localhost", {
+            port: Number(process.env.REDIS_PORT ?? 6379),
           }),
     }),
   });

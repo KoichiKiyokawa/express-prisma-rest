@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { FastifyRequest } from "fastify";
+import { SESSION_KEY } from "../../constants/session-key";
 import { UnauthorizedException, validateAuth } from "../core/controller";
 import { UserRepository } from "../user/repository";
 
@@ -20,12 +21,13 @@ export const AuthLogin = async (req: FastifyRequest<{ Body: LoginBody }>) => {
   if (!ok) throw commonError;
 
   // write to session
-  req.session.isLoggedIn = true;
+  req.session.set(SESSION_KEY.IS_LOGGED_IN, true);
+  await req.session.save();
   return "ok";
 };
 
 export const AuthLogout = async (req: FastifyRequest) => {
-  req.session.isLoggedIn = false;
+  req.session.set(SESSION_KEY.IS_LOGGED_IN, false);
   return "ok";
 };
 
