@@ -11,8 +11,7 @@ async function bootstrap() {
 
   const RedisStore = connectRedis(session as any);
   const redisClient = redis.createClient({
-    host: process.env.REDIS_HOST ?? "localhost",
-    port: Number(process.env.REDIS_PORT) ?? 6379,
+    url: process.env.REDIS_URL ?? "redis://localhost:6379",
   });
 
   const app = fastify({ logger: { prettyPrint: !isProd } });
