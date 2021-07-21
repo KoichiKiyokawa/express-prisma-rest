@@ -2,9 +2,20 @@ services:
   - type: web
     name: fastify-server
     env: node
-    buildCommand: yarn install --frozen-lockfile && yarn build && prisma generate
-    startCommand: node dist
+    buildCommand: yarn install --frozen-lockfile && prisma generate && yarn build
+    startCommand: node dist/index.js
     healthCheckPath: /_render/health
+    envVars:
+      - key: REDIS_HOST
+        fromService:
+          name: fastify-redis
+          type: pserv
+          property: host
+      - key: REDIS_PORT
+        fromService:
+          name: fastify-redis
+          type: pserv
+          property: port
   - type: pserv
     name: fastify-redis
     env: docker
