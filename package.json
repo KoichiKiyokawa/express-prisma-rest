@@ -11,7 +11,8 @@
     "dev:watch": "tsc -w",
     "test": "jest",
     "build": "rm -rf dist && tsc",
-    "deploy": "sh scripts/deploy.sh"
+    "deploy": "sh scripts/deploy.sh",
+    "postinstall": "prisma generate"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +26,8 @@
     "fastify-cookie": "^5.3.1",
     "fastify-cors": "^6.0.2",
     "fastify-session": "^5.2.1",
-    "ioredis": "^4.27.6"
+    "ioredis": "^4.27.6",
+    "prisma": "^2.27.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -40,7 +42,6 @@
     "npm-run-all": "^4.1.5",
     "pino-pretty": "^5.1.2",
     "prettier": "^2.3.2",
-    "prisma": "^2.27.0",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"

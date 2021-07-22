@@ -20,6 +20,6 @@ jobs:
       # - run: printenv ENV_TS | base64 -d > src/env.ts
       #   env:
       #     ENV_TS: ${{ secrets.ENV_TS }}
-      - run: yarn prisma generate
+      # - run: yarn prisma generate
       - run: yarn tsc --noEmit
       - run: yarn test
