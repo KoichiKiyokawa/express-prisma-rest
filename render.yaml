@@ -2,7 +2,7 @@ services:
   - type: web
     name: fastify-server
     env: node
-    buildCommand: yarn install --frozen-lockfile && prisma generate && yarn build
+    buildCommand: npm install && npm run build
     startCommand: node dist/index.js
     healthCheckPath: /_render/health
     envVars:
