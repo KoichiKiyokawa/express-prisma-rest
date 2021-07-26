@@ -1,5 +1,6 @@
 import { FastifyInstance, FastifyPluginAsync } from "fastify";
 import { AuthRouter } from "../auth/router";
+import { PostRouter } from "../post/router";
 import { UserRouter } from "../user/router";
 
 export function setupRoutes(router: FastifyInstance) {
@@ -10,4 +11,5 @@ export function setupRoutes(router: FastifyInstance) {
 const setup: FastifyPluginAsync = async (router) => {
   UserRouter(router);
   AuthRouter(router);
+  PostRouter(router);
 };

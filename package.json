@@ -20,6 +20,7 @@
     "@mgcrea/fastify-session": "^0.14.1",
     "@mgcrea/fastify-session-redis-store": "^0.9.1",
     "@prisma/client": "^2.27.0",
+    "@sinclair/typebox": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "fastify": "^3.19.1",
@@ -49,5 +50,8 @@
   "prettier": {},
   "jest": {
     "preset": "ts-jest"
+  },
+  "volta": {
+    "node": "16.5.0"
   }
 }
