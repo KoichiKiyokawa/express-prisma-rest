@@ -9,7 +9,7 @@
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
     "test": "jest",
     "deploy": "sh scripts/deploy.sh",
-    "postinstall": "prisma generate"
+    "postinstall": "sh scripts/prisma_init.sh"
   },
   "author": "",
   "license": "ISC",
@@ -47,6 +47,7 @@
     "preset": "ts-jest"
   },
   "volta": {
-    "node": "16.5.0"
+    "node": "16.5.0",
+    "yarn": "1.22.11"
   }
 }
