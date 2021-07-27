@@ -17,7 +17,6 @@ specifiers:
   fastify: ^3.19.1
   fastify-cookie: ^5.3.1
   fastify-cors: ^6.0.2
-  fastify-session: ^5.2.1
   ioredis: ^4.27.6
   jest: ^27.0.6
   nodemon: ^2.0.12
@@ -39,7 +38,6 @@ dependencies:
   fastify: 3.19.2
   fastify-cookie: 5.3.1
   fastify-cors: 6.0.2
-  fastify-session: 5.2.1
   ioredis: 4.27.6
   prisma: 2.27.0
 
@@ -1770,15 +1768,6 @@ packages:
     resolution: {integrity: sha512-ZdCvKEEd92DNLps5n0v231Bha8bkz1DjnPP/aEz37rz/q42Z5JVLmgnqR4DYuNn3NXAO3IDCPyRvgvxtJ4Ym4w==}
     dev: false
 
-  /fastify-session/5.2.1:
-    resolution: {integrity: sha512-2ZOLPGPeeBE35HOgYD4/v9c304IGF2ExOh35tuKegrB3QSNB+kKeqqzUXrUJ2h0Vr5nTyvrimtPAPQZG963vOw==}
-    engines: {node: '>= 10.13.0'}
-    dependencies:
-      cookie-signature: 1.1.0
-      fastify-plugin: 3.0.0
-      uid-safe: 2.1.5
-    dev: false
-
   /fastify-warning/0.2.0:
     resolution: {integrity: sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==}
     dev: false
@@ -3467,11 +3456,6 @@ packages:
     resolution: {integrity: sha512-MaL/oqh02mhEo5m5J2rwsVL23Iw2PEaGVHgT2vFt8AAsr0lfvQA5dpXo9TPu0rz7tSBdUPgkbam0j/fj5ZM8yg==}
     dev: false
 
-  /random-bytes/1.0.0:
-    resolution: {integrity: sha1-T2ih3Arli9P7lYSMMDJNt11kNgs=}
-    engines: {node: '>= 0.8'}
-    dev: false
-
   /rc/1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
@@ -4063,13 +4047,6 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
-
-  /uid-safe/2.1.5:
-    resolution: {integrity: sha512-KPHm4VL5dDXKz01UuEd88Df+KzynaohSL9fBh096KWAxSKZQDI2uBrVqtvRM4rwrIrRRKsdLNML/lnaaVSRioA==}
-    engines: {node: '>= 0.8'}
-    dependencies:
-      random-bytes: 1.0.0
-    dev: false
 
   /unbox-primitive/1.0.1:
     resolution: {integrity: sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw==}
