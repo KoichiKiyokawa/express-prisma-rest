@@ -7,6 +7,7 @@ export function setupRoutes(router: FastifyInstance) {
   router.get("/", async () => {
     throw Error("ok");
   });
+  router.get("/status", async () => "ok"); // for Google App Engine
   router.get("/_ah/health", async () => "ok"); // for Google App Engine
   router.get("/_render/health", async () => "ok");
   router.register(setup, { prefix: "api/v1" });
