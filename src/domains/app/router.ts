@@ -4,6 +4,9 @@ import { PostRouter } from "../post/router";
 import { UserRouter } from "../user/router";
 
 export function setupRoutes(router: FastifyInstance) {
+  router.get("/", async () => {
+    throw Error("ok");
+  });
   router.get("/_render/health", async () => "ok");
   router.register(setup, { prefix: "api/v1" });
 }

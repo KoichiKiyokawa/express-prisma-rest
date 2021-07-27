@@ -5,12 +5,9 @@
   "main": "dist/index.js",
   "private": true,
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "run-p dev:*",
-    "dev:run": "yarn build && nodemon dist",
-    "dev:watch": "tsc -w",
+    "start": "ts-node -T src/index.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
     "test": "jest",
-    "build": "rm -rf dist && tsc",
     "deploy": "sh scripts/deploy.sh",
     "postinstall": "prisma generate"
   },
@@ -27,7 +24,8 @@
     "fastify-cookie": "^5.3.1",
     "fastify-cors": "^6.0.2",
     "ioredis": "^4.27.6",
-    "prisma": "^2.27.0"
+    "prisma": "^2.27.0",
+    "ts-node": "^10.1.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -39,11 +37,9 @@
     "@types/supertest": "^2.0.11",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
-    "npm-run-all": "^4.1.5",
     "pino-pretty": "^5.1.2",
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.3",
-    "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   },
   "prettier": {},
